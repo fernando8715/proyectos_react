@@ -1,8 +1,14 @@
+import { useEffect, useState } from 'react'
+
 import './App.css'
+
+import React from 'react'
+import { FollowMouse } from './FollowMouse'
 
 export const App = () => {
   return (
-    <h1>Mouse follower</h1>
+    <FollowMouse />
   )
 }
+
 
