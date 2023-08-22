@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Square } from "./Square"
-import {calculateWin} from '../helpers/calculateWin'
-import confetti from "canvas-confetti"
-
-
+import { updateBoard } from "../helpers/updateBoard";
+import { ResultGame } from "./ResultGame";
 
 
 export const Board = () => {
@@ -13,21 +11,8 @@ export const Board = () => {
     const [turn, setTurn] = useState(turnos.x);
     const [winner, setWinner] = useState(null);
 
-    const updateBoard = (index)=> {
-        if(board[index] || calculateWin(board)) return;
-
-        const newTurn = (turn === turnos.x) ? turnos.o : turnos.x;
-        const newBoard = [...board];
-        newBoard[index] = turn;
-        setBoard(newBoard);
-        setTurn(newTurn);
-        const newWin = calculateWin(newBoard);
-        if(newWin){
-            setWinner(newWin);
-            confetti();
-        }else if (checkEndGame(newBoard)) {
-            setWinner(false);
-        }
+    const handleUpdate = (index)=> {
+        updateBoard(index, board, setBoard, turnos, turn, setTurn, setWinner, checkEndGame );
     }
 
     const resetGame = ()=> {
@@ -50,7 +35,7 @@ export const Board = () => {
                 <Square 
                     key={index}
                     index={index}
-                    updateBoard={updateBoard}
+                    updateBoard={handleUpdate}
                     >
                     {c}
                 </Square>
@@ -81,7 +66,11 @@ export const Board = () => {
                         }
 
                         <footer>
-                            <button onClick={resetGame}>Empezar de nuevo</button>
+                            <button 
+                                onClick={resetGame} 
+                                className="control">
+                                    Empezar de nuevo
+                            </button>
                         </footer>
                     </div>
                 </section>

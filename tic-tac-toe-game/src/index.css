@@ -54,8 +54,8 @@ body {
 }
 
 .board button:hover {
-  background: #eee;
-  color: #222;
+  background: #09f;
+  color: #eee;
 }
 
 .board .game {
@@ -88,8 +88,8 @@ body {
 
 .winner {
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 133vw;
+  height: 95vh;
   top: 0;
   left: 0;
   display: grid;
@@ -99,13 +99,13 @@ body {
 
 .winner .text {
   background: #111;
-  height: 300px;
-  width: 320px;
+  height: 250px;
+  width: 200px;
   border: 2px solid #eee;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
   gap: 20px;
 }
