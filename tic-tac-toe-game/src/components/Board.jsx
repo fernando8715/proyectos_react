@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Square } from "./Square"
 import { updateBoard } from "../helpers/updateBoard";
 import { ResultGame } from "./ResultGame";
+import { Turnos } from "./Turnos";
+import { handlerReset } from "../helpers/handlerReset";
 
 
 export const Board = () => {
@@ -15,11 +17,9 @@ export const Board = () => {
         updateBoard(index, board, setBoard, turnos, turn, setTurn, setWinner, checkEndGame );
     }
 
-    const resetGame = ()=> {
-        setBoard(Array(9).fill(null));
-        setTurn(turnos.x);
-        setWinner(null)
-    }
+    const onResetGame = ()=> {
+        handlerReset(setBoard, setTurn, setWinner, turnos)
+    };
 
     const checkEndGame = (newBoard)=> {
         return newBoard.every(square => square !== null)
@@ -28,7 +28,7 @@ export const Board = () => {
 
   return (
     <>
-        <button onClick={resetGame}>Reset Game</button>
+        <button onClick={onResetGame}>Reset Game</button>
         <section className="game">
             {board.map((c, index)=> {
                 return (
@@ -42,40 +42,11 @@ export const Board = () => {
                 )
             })}
         </section>
-        <section className="turn">
-            <Square isSelected={turn === turnos.x}>{turnos.x}</Square>
-            <Square isSelected={turn === turnos.o}>{turnos.o}</Square>
-        </section>
 
-        {
-            (winner !== null) && (
-                <section className="winner">
-                    <div className="text">
-                        <h2>
-                            {
-                                (winner === false)
-                                    ? 'empate'
-                                    : 'Gano'
-                            }
-                        </h2>
-                        {
-                            (winner) &&
-                            <header className="win">
-                                <Square>{winner}</Square>
-                            </header>
-                        }
+        <Turnos turn={turn} turnos={turnos}/>
 
-                        <footer>
-                            <button 
-                                onClick={resetGame} 
-                                className="control">
-                                    Empezar de nuevo
-                            </button>
-                        </footer>
-                    </div>
-                </section>
-            )
-        }
+        <ResultGame winner={winner} onResetGame={onResetGame}/>
+
     </>
   )
 }
