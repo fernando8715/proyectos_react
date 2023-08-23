@@ -1,8 +1,23 @@
+import { useEffect, useState } from "react";
 import { AgregarGastos, ListaGastos } from "./components"
 
 import './App.css'
 
 export const AppGastoSemanal = () => {
+
+  const [gastos, setGastos] = useState([]);
+  const [presupuesto, setPresupuesto] = useState(0);
+
+  useEffect( ()=> {
+    const newPresupuesto = prompt('Ingrese el presupuesto');
+    setPresupuesto(Number(newPresupuesto));
+    
+  }, [])
+
+  const onAddGasto = (gasto)=> {
+    setGastos([...gastos, gasto])
+  }
+
   return (
     <div className="container">
       <header>
@@ -11,8 +26,9 @@ export const AppGastoSemanal = () => {
       <section className="contenido-principal">
         
         <div className="row">
-            <AgregarGastos />
-            <ListaGastos />
+            <AgregarGastos onAddGasto={onAddGasto}/>
+            <ListaGastos gastos={gastos} presupuesto={presupuesto}/>
+
         </div>
 
 

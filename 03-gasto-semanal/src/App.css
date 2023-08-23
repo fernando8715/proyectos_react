@@ -36,3 +36,14 @@ h2 {
   font-size: 22px;
   margin-bottom:30px;
 }
+
+.precio {
+  font-size: 17px;
+  color: rgb(85, 8, 8);
+  font-weight: 600;
+  
+}
+
+.descripcionGasto {
+  color: #004e92;
+}

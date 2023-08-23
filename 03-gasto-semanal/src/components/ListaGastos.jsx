@@ -1,6 +1,9 @@
+import { Presupuesto } from "./";
 
 
-export const ListaGastos = () => {
+
+export const ListaGastos = ({gastos, presupuesto}) => {
+    
   return (
     <div className="col">
         <div className="contenido secundario">
@@ -8,16 +11,17 @@ export const ListaGastos = () => {
             <h2 className="text-center">Listado</h2>
 
             <div id="gastos">
-                <ul className="list-group"></ul>
+                <ol className="list-group">
+                    {gastos.map((gasto) => (
+                        <li key={gasto.id} className="list-group-item descripcionGasto">
+                            <strong>{gasto.desc} </strong>
+                            <span className="precio">${gasto.prec}</span>
+                        </li>
+                    ))}
+                </ol>
             </div>
-            <div id="presupuesto" className="presupuesto">
-                <div className="alert alert-primary">
-                    <p>Presupuesto: $ <span id="total"></span> </p>
-                </div>
-                <div className="restante alert alert-success">
-                    <p>Restante: $ <span id="restante"></span></p>
-                </div>
-            </div>
+            <Presupuesto presupuesto={presupuesto} gastos={gastos}/>
+
         </div> 
     </div>
   )
