@@ -47,7 +47,7 @@ h2 {
 }
 
 h3 {
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 img {
@@ -61,7 +61,7 @@ a {
 }
 
 p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 button, input[type="submit"] {
@@ -71,6 +71,7 @@ button, input[type="submit"] {
   color: var(--blanco);
   outline: 0;
   border-color: transparent;
+  cursor: pointer;
 }
 
 /* Clases globales */
@@ -236,7 +237,7 @@ button, input[type="submit"] {
 
 @media (min-width: 1200px) {
   .movies__grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
 }
 
@@ -249,15 +250,12 @@ button, input[type="submit"] {
   width: 95%;
 }
 
-@media (min-width:768pxpx) {
-  .movie {
-    width: 50%;
-  }
-}
 
 @media (min-width:768px) {
   .movie {
-    width: 85%;
+    width: 88%;
+    height: fit-content;
+    margin: 0 auto;
   }
 }
 
@@ -270,7 +268,7 @@ button, input[type="submit"] {
 
 .movie__desc {
   margin: 0;
-  font-size: 1rem;
+  overflow-y: auto;
 }
 
 .movie__content {
@@ -342,7 +340,7 @@ textarea{
   margin-top: 2rem;
   padding: 1rem;
   border-radius: 5px;
-  background: #c6c6c654;
+  background: #c6c6c6a1;
   color: var(--negro);
   width: 80%;
   opacity: 4; 
@@ -363,10 +361,11 @@ textarea{
 input[type="submit"] {
   margin-top: 1rem;
   border-color: transparent;
+  cursor: pointer;
 }
 
 .botones {
-  margin: auto;
+  margin: 0 auto;
 }
 
 .botones__editar {
@@ -391,4 +390,30 @@ input[type="submit"] {
 
 form button {
   margin-top: 1rem;
+}
+
+.editarMovie {
+  border-top: 2px solid rgba(53, 46, 46, 0.471);
+  margin-top: .5rem;
+}
+
+.editarMovie h3 {
+  margin: 1.5rem 0 ;
+}
+
+.editarMovie label {
+  display: block;
+  text-align: left;
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.editarMovie input[type="text"],
+.editarMovie textarea {
+  margin: 0;
+}
+
+.editarMovie input[type="text"] {
+  margin: 0;
 }

@@ -1,7 +1,13 @@
+import { useEffect, useState } from "react"
 import { Navigate, Movie, Search, Agregar } from "./components"
+import { initStorage } from "./helpers/initStorage";
 
 
 export const App = () => {
+  
+  const init = initStorage();
+  const [listMovies, setListMovies] = useState(init);
+  
   return (
     <>
       <header className="header">
@@ -15,11 +21,16 @@ export const App = () => {
         </header>
         
         <div className="layout">
-          {/* Listado peliculas */}
-          <Movie />
+          <main className="movies">
+            <div className="movies__grid">
+            {/* Listado peliculas */}
+              <Movie listMovies={listMovies} setListMovies={setListMovies}/>
+            </div> 
+          </main>
+        
           <div className="panel">  
-              <Search />
-              <Agregar />
+              <Search listMovies={listMovies} setListMovies={setListMovies}/>
+              <Agregar setListMovies={setListMovies}/>
           </div>
          </div>
         
