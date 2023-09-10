@@ -1,14 +1,9 @@
+import {formatoDinero} from '../helpers'
 
-export const ControlPresupuesto = ({presupuesto}) => {
 
-    {/* Formatear un string a un tipo de moneda */}
-    const formatearPresupuesto = (cantidad)=> {
-        return cantidad.toLocaleString('es-US', {
-            style:'currency', 
-            currency: 'USD'
-        })
-    }
+export const ControlPresupuesto = ({presupuesto, gastado}) => {
 
+    
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
         <div>
@@ -17,15 +12,15 @@ export const ControlPresupuesto = ({presupuesto}) => {
 
         <div className="contenido-presupuesto">
             <p>
-                <span>Presupuesto: </span>{formatearPresupuesto(presupuesto)}
+                <span>Presupuesto: </span>{formatoDinero(presupuesto)}
             </p>
 
             <p>
-                <span>Disponible: </span>{0}
+                <span>Disponible: </span>{formatoDinero(presupuesto-gastado)}
             </p>
             
             <p>
-                <span>Gastado: </span>{formatearPresupuesto(presupuesto)}
+                <span>Gastado: </span>{formatoDinero(gastado)}
             </p>
         </div>
 
