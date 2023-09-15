@@ -1,14 +1,32 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {Mensaje} from './'
 import IconoCerrar from '../img/cerrar.svg';
 
+// el gastoEditar lo su para cambiar el texto del boton del formulario
+// el setGastoEditar envia un objeto vacio al cerrar el modal
 
-export const Modal = ({setModal, animarModal, setAnimarModal, guardarGastos}) => {
-
+export const Modal = ({
+    setModal, 
+    animarModal, 
+    setAnimarModal, 
+    guardarGastos, 
+    gastoEditar, 
+    setGastoEditar
+}) => {
+    
     const [mensaje, setMensaje] = useState('');
     const [nombreGasto, setNombreGasto] = useState('');
     const [cantidadGasto, setCantidadGasto] = useState('');
     const [categoriaGasto, setCategoriaGasto] = useState('');
+
+    useEffect( ()=> {
+        if(Object.keys(gastoEditar).length > 0){
+            const {nombreGasto, cantidadGasto, categoriaGasto} = gastoEditar;
+            setNombreGasto(nombreGasto);
+            setCantidadGasto(cantidadGasto);
+            setCategoriaGasto(categoriaGasto);
+        }
+    }, [gastoEditar])
 
     const limpiarForm = ()=> {
         setNombreGasto('');
@@ -22,12 +40,15 @@ export const Modal = ({setModal, animarModal, setAnimarModal, guardarGastos}) =>
         
         setTimeout(() => {
             setModal(false);
+            setGastoEditar({});
         }, 500);
     }
 
 
     const handleSubmit = (e)=> {
         e.preventDefault();
+
+        // validar campos diligenciados
         if([nombreGasto, cantidadGasto, categoriaGasto].includes('')){
             setMensaje('Todos los campos son obligatorios');
 
@@ -36,7 +57,15 @@ export const Modal = ({setModal, animarModal, setAnimarModal, guardarGastos}) =>
             }, 3000);
             return;
         }
-        guardarGastos({nombreGasto, cantidadGasto, categoriaGasto});
+
+        //actualizar gasto o guardar uno nuevo
+        if(Object.keys(gastoEditar).length >0){
+            guardarGastos({...gastoEditar, nombreGasto, cantidadGasto, categoriaGasto })
+        }
+        else {
+            guardarGastos({nombreGasto, cantidadGasto, categoriaGasto});
+        }
+        
         limpiarForm();
         handleOcultarModal();
     }
@@ -55,9 +84,11 @@ export const Modal = ({setModal, animarModal, setAnimarModal, guardarGastos}) =>
             onSubmit={handleSubmit}
             className={`formulario ${animarModal ? 'animar' : 'cerrar'}`}
         >
-            <legend>Nuevo Gasto</legend>
+            <legend>{(gastoEditar.nombreGasto) ? 'Editar gasto' : 'Nuevo gasto'}</legend>
+
 
             {mensaje && <Mensaje tipo='error'>{mensaje}</Mensaje>}
+                        
             <div className='campo'>
                 <label htmlFor="nombre">Nombre del gasto</label>
                 <input 
@@ -101,7 +132,7 @@ export const Modal = ({setModal, animarModal, setAnimarModal, guardarGastos}) =>
 
             <input 
                 type="submit" 
-                value="Añadir gasto"
+                value={(gastoEditar.nombreGasto) ? 'Editar gasto' : 'Añadir gasto'}
             />
             
         </form>

@@ -1,7 +1,17 @@
+import { useEffect, useState } from 'react'
 import {formatoDinero} from '../helpers'
 
 
-export const ControlPresupuesto = ({presupuesto, gastado}) => {
+export const ControlPresupuesto = ({presupuesto, gastos}) => {
+
+    const [disponible, setDisponible] = useState(0);
+    const [gastado, setGastado] = useState(0);
+
+    useEffect(()=> {
+        const totalGastado = gastos.reduce((total, gasto)=> gasto.cantidadGasto + total, 0);
+        setDisponible(presupuesto-totalGastado);
+        setGastado(totalGastado);
+    }, [gastos])
 
     
   return (
@@ -16,7 +26,7 @@ export const ControlPresupuesto = ({presupuesto, gastado}) => {
             </p>
 
             <p>
-                <span>Disponible: </span>{formatoDinero(presupuesto-gastado)}
+                <span>Disponible: </span>{formatoDinero(disponible)}
             </p>
             
             <p>
