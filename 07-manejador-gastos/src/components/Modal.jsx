@@ -31,7 +31,7 @@ export const Modal = ({
     const limpiarForm = ()=> {
         setNombreGasto('');
         setCantidadGasto('');
-        setCantidadGasto('');
+        setCategoriaGasto('');
     }
 
     const handleOcultarModal = ()=> {
@@ -49,7 +49,7 @@ export const Modal = ({
         e.preventDefault();
 
         // validar campos diligenciados
-        if([nombreGasto, cantidadGasto, categoriaGasto].includes('')){
+        if([nombreGasto, cantidadGasto, categoriaGasto].includes('') || cantidadGasto <= 0 ){
             setMensaje('Todos los campos son obligatorios');
 
             setTimeout(() => {

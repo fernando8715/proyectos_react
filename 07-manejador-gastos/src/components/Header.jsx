@@ -15,7 +15,6 @@ export const Header = ({
             ? <ControlPresupuesto 
                 presupuesto={presupuesto}
                 gastos={gastos}
-
               />
             : <NuevoPresupuesto 
             presupuesto={presupuesto}
