@@ -5,3 +5,4 @@ export * from './ControlPresupuesto';
 export * from './Modal';
 export * from './ListadoGastos';
 export * from './Gasto';
+export * from './Filtros'
