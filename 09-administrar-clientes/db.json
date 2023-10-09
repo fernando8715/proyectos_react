@@ -1,0 +1,25 @@
+{
+    "clientes" : [
+        {
+          "id": 1,
+          "nombre": "Fernando",
+          "telefono": 123456,
+          "email": "fernando@correo.com",
+          "empresa": "codigoWar"
+        },
+        {
+          "id": 2,
+          "nombre": "Allie",
+          "telefono": 123456,
+          "email": "allie@correo.com",
+          "empresa": "codigoWar"
+        },
+        {
+          "id": 3,
+          "nombre": "Juan",
+          "telefono": 123456,
+          "email": "juan@correo.com",
+         " empresa": "codigo con juan"
+        }
+      ]
+}
