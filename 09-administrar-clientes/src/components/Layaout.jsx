@@ -19,7 +19,7 @@ export const Layaout = () => {
             </nav>
         </aside>
 
-        <main className='px-2 py-10 md:w-3/4 md:p-10 md:h-screen overflow-y-scroll'>
+        <main className='px-2 py-10 md:w-3/4 md:p-10 md:h-screen overflow-x-scroll'>
             <Outlet />
         </main>
 

@@ -1,5 +1,6 @@
-import {Form, useNavigate, useActionData} from 'react-router-dom'
-import {Formulario, Error} from '../components/index'
+import {Form, useNavigate, useActionData, redirect} from 'react-router-dom';
+import {Formulario, Error} from '../components/index';
+import {agregarCliente, obtenerClientes} from '../data/clientes'
 
 export async function action({request}) {
   
@@ -7,7 +8,6 @@ export async function action({request}) {
   const datos = Object.fromEntries(formData);
 
   const email = formData.get('email');
-
   
   // validaciones
   const errores = [];
@@ -15,9 +15,16 @@ export async function action({request}) {
   if(Object.values(datos).includes('')) {errores.push('Todos los campos son obligatorios')};
   
   let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+
   if(!regex.test(email)){errores.push('El correo no es valido')};
+
+  if(Object.keys(errores).length){
+    return errores
+  }
+
+  await agregarCliente(datos);
   
-  return errores
+  return redirect('/')
 }
 
 export const NuevoCliente = () => {
@@ -44,7 +51,7 @@ export const NuevoCliente = () => {
           method='post'
         >
           {errores?.length && errores.map( (error, i)=>(
-            <Error key={i}>{error}</Error>
+            <Error key={i}>{error}</Error> 
           ))}
           <Formulario />
 

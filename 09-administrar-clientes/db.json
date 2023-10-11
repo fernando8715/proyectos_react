@@ -1,25 +1,105 @@
 {
-    "clientes" : [
-        {
-          "id": 1,
-          "nombre": "Fernando",
-          "telefono": 123456,
-          "email": "fernando@correo.com",
-          "empresa": "codigoWar"
-        },
-        {
-          "id": 2,
-          "nombre": "Allie",
-          "telefono": 123456,
-          "email": "allie@correo.com",
-          "empresa": "codigoWar"
-        },
-        {
-          "id": 3,
-          "nombre": "Juan",
-          "telefono": 123456,
-          "email": "juan@correo.com",
-         " empresa": "codigo con juan"
-        }
-      ]
+  "clientes": [
+    {
+      "id": 1,
+      "nombre": "Fernando",
+      "telefono": 123456,
+      "email": "fernando@correo.com",
+      "empresa": "codigoWar"
+    },
+    {
+      "id": 2,
+      "nombre": "Allie",
+      "telefono": 123456,
+      "email": "allie@correo.com",
+      "empresa": "codigoWar"
+    },
+    {
+      "id": 3,
+      "nombre": "Juan",
+      "telefono": 123456,
+      "email": "juan@correo.com",
+      " empresa": "codigo con juan"
+    },
+    {
+      "nombre": "",
+      "empresa": "",
+      "email": "",
+      "telefono": "",
+      "notas": "",
+      "id": 4
+    },
+    {
+      "nombre": "aa",
+      "empresa": "dd",
+      "email": "a@h.co",
+      "telefono": "777",
+      "notas": "hh",
+      "id": 5
+    },
+    {
+      "nombre": "juan",
+      "empresa": "juan frontend",
+      "email": "j@h.com",
+      "telefono": "8888",
+      "notas": "",
+      "id": 6
+    },
+    {
+      "nombre": "juan",
+      "empresa": "juan frontend",
+      "email": "j@h.com",
+      "telefono": "8888",
+      "notas": "desarrollando software",
+      "id": 7
+    },
+    {
+      "nombre": "Cristina",
+      "empresa": "platzy",
+      "email": "p@h.com",
+      "telefono": "7787",
+      "notas": "plataforma platzy",
+      "id": 8
+    },
+    {
+      "nombre": "fernando Frontend",
+      "empresa": "creador Frontend",
+      "email": "c@h.com",
+      "telefono": "7878",
+      "notas": "creando frontend",
+      "id": 9
+    },
+    {
+      "nombre": "juan",
+      "empresa": "juan el desarrollador",
+      "email": "huja@j.com",
+      "telefono": "89889",
+      "notas": "juan udemy",
+      "id": 10
+    },
+    {
+      "nombre": "kkkk",
+      "empresa": "hjh",
+      "email": "iqhhk@jj.com",
+      "telefono": "887891",
+      "notas": "yshslkas",
+      "id": 11
+    },
+    {
+      "nombre": "fernando software",
+      "empresa": "creando software",
+      "email": "hh@h.com",
+      "telefono": "78877",
+      "notas": "frejsk",
+      "id": 12
+    },
+    {
+      "nombre": "kññpi",
+      "empresa": "nuevo software",
+      "email": "ssss@h.com",
+      "telefono": "878889",
+      "notas": "junnhl",
+      "id": 13
+    }
+  ]
 }

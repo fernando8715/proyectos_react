@@ -1,5 +1,15 @@
 ## proyecto creado utilizando varias paginas (URL's), empleando la libreria de React Router Dom
 
+        **link**
+
+        **navlink*
+
+        **navigate**
+
+        **redirect*
+            esta funcionalidad de react router dom me permite usarla en action y loaders para utilizarlos como return de esas funciones y eso va a hacer que una vez se ejute la funcion el return me va a llevar a una ruta que le especifiquemos. redirect('/').
+            Hay que importarla donde la vaya a utilizar
+
         **Loader** 
             Se crea como una funcion exportable que retorna un valor. 
             Es similar al useState y useEffect de React, permite obtener datos de una API. 
@@ -20,6 +30,18 @@
     
         **UseAction**
             Se utiliza para obtener los valores que retorna la funcion action.
+            Se crea una constante dentro del componente que contiene el formulario y se le asigna la funcion del hook
+
+        **useRouteError**
+            se utiliza para capturar los errores y mostrar mensajes que mejoren la UI/UX, creamos un componente y asignamos a una constante el hook, si utilizamos la propiedad message tendremos un mensaje del erros. Luego importamos el componente en el archivo route y en la ruta donde lo necesitemos colocamos la key errorElement:<Nombre del componente del error>
+        
+        
+        
+        **variables de entorno**
+            Una variable de entorno es una variable que en el entorno de desarrollo puede tener un valor de una url y en el entorno de produccion uno diferente. usualmente en lugar de tener una constante de la url en la funcion, esta se puede ocultar con una variable de entorno.
+            Cada framework o tecnologia que utilicemos para crear proyectos en react tienen diferentes formas de manejar las variables de entorno, para el caso de vite se coloca en mayuscula VITE seguido de guion bajo_ y seguido del nombre = el valor. VITE_API_URL = http://localhost3000
+            Usualmente el usuario de una base de datos es root.  VITE_DB_USUARIO = root
+            Para leer los valores de este archivo se debe arrancar nuevamente la aplicacion para que lo reconozca y se debe importar el archivo en la funcion que definimos como loader que es donde se cargan los datos.
 
 
 ## Conceptos

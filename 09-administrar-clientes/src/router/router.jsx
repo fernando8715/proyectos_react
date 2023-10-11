@@ -1,5 +1,5 @@
 import {createBrowserRouter} from 'react-router-dom';
-import { Layaout } from '../components/Layaout';
+import { Layaout, ErrorPage } from '../components';
 import {Inicio, Loader as clientesLoader} from '../pages/Inicio'
 import {NuevoCliente, action as nuevoClienteAction} from '../pages/NuevoCliente'
 
@@ -13,6 +13,7 @@ export const router = createBrowserRouter([
                 index: true,
                 element: <Inicio />,
                 loader: clientesLoader,
+                errorElement: <ErrorPage />
             },
             {
                 path: '/cliente/nuevo',
