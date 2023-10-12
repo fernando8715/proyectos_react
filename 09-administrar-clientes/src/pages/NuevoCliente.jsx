@@ -1,6 +1,6 @@
 import {Form, useNavigate, useActionData, redirect} from 'react-router-dom';
 import {Formulario, Error} from '../components/index';
-import {agregarCliente, obtenerClientes} from '../data/clientes'
+import {agregarCliente} from '../data/clientes'
 
 export async function action({request}) {
   
